@@ -390,24 +390,11 @@ footer a{text-decoration:none;color:var(--gold)}
       </div>
       <p class="contact-line" style="margin-top:34px">Speaking inquiries<br><a href="mailto:speaking@shameerempowersyou.com">speaking@shameerempowersyou.com</a></p>
     </div>
-    <form id="inqForm" class="rv" novalidate>
-      <div class="f"><label for="name">Full name <span>*</span></label><input id="name" name="name" autocomplete="name" required></div>
-      <div class="f"><label for="org">Organization <span>*</span></label><input id="org" name="organization" autocomplete="organization" required></div>
-      <div class="f"><label for="email">Email <span>*</span></label><input id="email" name="email" type="email" autocomplete="email" required></div>
-      <div class="f"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
-      <div class="f"><label for="etype">Event name / type <span>*</span></label><input id="etype" name="event" placeholder="e.g. Annual leadership conference" required></div>
-      <div class="f"><label for="edate">Event date</label><input id="edate" name="date" type="date"></div>
-      <div class="f"><label for="eloc">Event location</label><input id="eloc" name="location" placeholder="City, state, or virtual"></div>
-      <div class="f"><label for="aud">Expected audience size</label>
-        <select id="aud" name="audience"><option value="">Select</option><option>Under 50</option><option>50 to 100</option><option>100 to 250</option><option>250 to 500</option><option>500+</option></select></div>
-      <div class="f full"><label for="bud">Estimated speaker budget</label>
-        <select id="bud" name="budget"><option value="">Select</option><option>Not yet determined</option><option>Under $2,500</option><option>$2,500 to $5,000</option><option>$5,000 to $10,000</option><option>$10,000+</option></select></div>
-      <div class="f full"><label for="det">Additional event details</label><textarea id="det" name="details" placeholder="Audience, theme, preferred topic, format, anything that helps."></textarea></div>
-      <div class="hp" aria-hidden="true"><label>Leave blank<input tabindex="-1" name="website" autocomplete="off"></label></div>
-      <button class="btn solid" type="submit" id="sub">Submit speaking inquiry</button>
-      <p class="disc">Submitting an inquiry is a request for information. It does not confirm a booking or hold a date.</p>
-      <div class="status" id="status" role="status" aria-live="polite" hidden></div>
-    </form>
+    <div class="formwrap rv">
+      <iframe src="https://api.leadconnectorhq.com/widget/form/xyHcwXwPwwTfiGbrXUUF" id="inline-xyHcwXwPwwTfiGbrXUUF" title="Speaking inquiry form" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Speaking Inquiry" data-height="900" data-layout-iframe-id="inline-xyHcwXwPwwTfiGbrXUUF" data-form-id="xyHcwXwPwwTfiGbrXUUF" style="width:100%;height:900px;min-height:900px;border:none;border-radius:4px;background:#fff"></iframe>
+      <p class="disc" style="margin-top:14px">Submitting an inquiry is a request for information. It does not confirm a booking or hold a date.</p>
+    </div>
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
   </div>
 </section>
 
@@ -440,17 +427,6 @@ document.getElementById('poster').addEventListener('click',()=>{
   f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
   f.allowFullscreen=true;
   document.getElementById('player').replaceChildren(f);
-});
-// PROTOTYPE form: validation + states only. Not connected to GoHighLevel.
-const form=document.getElementById('inqForm'),st=document.getElementById('status'),sub=document.getElementById('sub');
-form.addEventListener('submit',e=>{
-  e.preventDefault();
-  if(form.website.value)return;
-  const bad=[...form.querySelectorAll('[required]')].filter(i=>!i.value.trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value)));
-  st.hidden=false;
-  if(bad.length){st.textContent='Please complete the required fields: '+bad.map(b=>b.previousElementSibling.textContent.replace('*','').trim()).join(', ')+'.';bad[0].focus();return}
-  sub.disabled=true;sub.textContent='Sending...';
-  setTimeout(()=>{st.textContent='PROTOTYPE: form is not connected yet. In the live build this confirms: "Thank you. Your inquiry has been received. This is a request, not a confirmed booking."';sub.textContent='Inquiry received'},700);
 });
 </script>
 </body>
