@@ -53,7 +53,10 @@ nav.top .links a.cta{border:1px solid var(--gold);padding:13px 20px;color:var(--
 /* hero */
 .hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden;isolation:isolate}
 .hero-img{position:absolute;right:0;top:0;bottom:0;width:60%;z-index:-2}
-.hero-img img{width:100%;height:100%;object-fit:cover;object-position:52% 30%;transform:scale(1.06);animation:drift 22s ease-out forwards}
+.hero-img{display:flex;justify-content:flex-end;top:40px}
+.hero-img img{display:block;height:100%;width:auto;max-width:100%;object-fit:cover;object-position:50% 0;transform:scale(1.03);transform-origin:70% 0;animation:drift 22s ease-out forwards;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%),linear-gradient(180deg,transparent 0,#000 10%,#000 80%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 0,#000 22%),linear-gradient(180deg,transparent 0,#000 10%,#000 80%,transparent 100%);mask-composite:intersect}
 @keyframes drift{to{transform:scale(1)}}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
   linear-gradient(90deg,var(--black) 40%,rgba(5,5,5,.55) 52%,rgba(5,5,5,0) 74%),
@@ -75,8 +78,10 @@ nav.top .links a.cta{border:1px solid var(--gold);padding:13px 20px;color:var(--
 @keyframes pulse{50%{opacity:.25}}
 @media(max-width:860px){
   .hero{align-items:start}
-  .hero-img{width:100%;height:62svh;bottom:auto}
-  .hero-img img{object-position:50% 14%}
+  .hero-img{width:100%;height:60svh;bottom:auto;top:56px;justify-content:center}
+  .hero-img img{width:100%;object-position:50% 0;transform-origin:50% 0;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 72%,transparent 100%),linear-gradient(90deg,transparent 0,#000 8%,#000 100%);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 72%,transparent 100%),linear-gradient(90deg,transparent 0,#000 8%,#000 100%);mask-composite:intersect}
   .hero::before{background:linear-gradient(0deg,var(--black) 36%,rgba(5,5,5,.55) 56%,rgba(5,5,5,0) 78%),radial-gradient(70% 40% at 60% 30%,rgba(232,169,43,.2),transparent 70%)}
   .hero-copy{padding-top:50svh;padding-bottom:56px}
   .tedx-badge,.scroll{display:none}
@@ -236,7 +241,7 @@ footer a{text-decoration:none;color:var(--gold)}
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero-img"><img src="img/DSC07321.jpg" alt="Shameer Lorde, keynote speaker, adjusting his cap and looking directly at the camera" fetchpriority="high"></div>
+  <div class="hero-img"><img src="img/hero-echo.jpg" alt="Shameer Lorde, keynote speaker, mid-talk on stage, with a second gold-toned image of him behind" fetchpriority="high"></div>
   <div class="hero-copy">
     <p class="cred">TEDx Speaker<i>|</i>Army Veteran<i>|</i>Entrepreneur</p>
     <h1><span><i>One decision</i></span><span><i>can change</i></span><span><i><em class="g">everything.</em></i></span></h1>
